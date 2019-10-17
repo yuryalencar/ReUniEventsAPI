@@ -37,21 +37,40 @@ php artisan serve
 
 ### 2. How to use
 
-> Get all itens in facebook
+> Get all itens in facebook (GET)
 
 ```
 base_url/events
 ```
 
 
-> Get itens by page using pagination, contains 10 itens per page
+> Get itens by page using pagination, contains 10 itens per page (GET)
 
 ```
 base_url/events/pages/:idPage
 ```
 
-> Get a specific event
+> Get a specific event (GET)
 
 ```
 base_url/events/:idEvent
+```
+
+> Save a user token (POST)
+
+```
+base_url/users
+```
+
+> Update a user token (PUT)
+
+```
+base_url/users/:idUser
+```
+
+
+> Delete a user token (DELETE)
+
+```
+base_url/users/:idUser
 ```
