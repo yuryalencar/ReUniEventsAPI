@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,11 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//
+//Route::get('/events', function () {
+//
+//});
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('/events', 'EventController');
+Route::get('/events/perpage/{amount}', 'EventController@perpage');
+Route::get('/events/percategory/{category}', 'EventController@percategory');
