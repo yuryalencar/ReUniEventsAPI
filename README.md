@@ -44,16 +44,28 @@ base_url/events
 ```
 
 
-> Get itens by page using pagination, contains 10 itens per page (GET)
+> Get itens by page using pagination, contains N itens per page (GET)
 
 ```
-base_url/events/pages/:idPage
+base_url/events/perpage/:amountItensPerPage
 ```
 
 > Get a specific event (GET)
 
 ```
 base_url/events/:idEvent
+```
+
+> Get a all persons (GET)
+
+```
+base_url/persons
+```
+
+> Get a specific person (GET)
+
+```
+base_url/persons/:idPerson
 ```
 
 > Save a user token (POST)
