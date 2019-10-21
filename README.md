@@ -56,6 +56,12 @@ base_url/events/perpage/:amountItensPerPage
 base_url/events/:idEvent
 ```
 
+> Get a all persons (GET)
+
+```
+base_url/persons
+```
+
 > Get a specific person (GET)
 
 ```
