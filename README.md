@@ -37,6 +37,10 @@ php artisan serve
 
 ### 2. How to use
 
+This section has how to use of the ReUniEventsAPI
+
+#### 2.1 Events
+
 > Get all itens in facebook (GET)
 
 ```
@@ -49,6 +53,11 @@ base_url/events
 ```
 base_url/events/perpage/:amountItensPerPage
 ```
+> Search event by partial ou full name (GET)
+
+```
+base_url/events/byName/:FullOrPartialName
+```
 
 > Get a specific event (GET)
 
@@ -56,10 +65,18 @@ base_url/events/perpage/:amountItensPerPage
 base_url/events/:idEvent
 ```
 
+#### 2.2 Persons
+
 > Get a all persons (GET)
 
 ```
 base_url/persons
+```
+
+> Search person by partial ou full name (GET)
+
+```
+base_url/persons/byName/:FullOrPartialName
 ```
 
 > Get a specific person (GET)
@@ -68,21 +85,30 @@ base_url/persons
 base_url/persons/:idPerson
 ```
 
-> Save a user token (POST)
+> Save a person with your facebook token (POST)
 
 ```
-base_url/users
+base_url/persons
 ```
 
-> Update a user token (PUT)
+> Update a person with your facebook token (PUT)
 
 ```
-base_url/users/:idUser
+base_url/persons/:idUser
 ```
 
 
-> Delete a user token (DELETE)
+> Delete a person with your facebook token (DELETE)
 
 ```
-base_url/users/:idUser
+base_url/persons/:idUser
 ```
+
+#### 2.3 Pages
+
+**_@TODO_**
+
+
+#### 2.4 Facebook Events
+
+**_@TODO_**
