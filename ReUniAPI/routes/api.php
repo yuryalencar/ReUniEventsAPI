@@ -1,4 +1,4 @@
-
+<?php
 
 use Illuminate\Http\Request;
 use App\Event;
@@ -21,7 +21,12 @@ use App\Event;
 Route::apiResource('/events', 'EventController');
 Route::get('/events/perpage/{amount}', 'EventController@perpage');
 Route::get('/events/percategory/{category}', 'EventController@percategory');
+Route::get('/events/byName/{partialName}', 'EventController@byName');
 
 Route::apiResource('/persons', 'PersonController');
 Route::get('/persons/perpage/{amount}', 'PersonController@perpage');
-<!--Route::get('/persons/byName/{name}', 'PersonController@byName');-->
+Route::get('/persons/byName/{partialName}', 'PersonController@byName');
+
+//Route::apiResource('/persons', 'PersonController');
+//Route::get('/persons/perpage/{amount}', 'PersonController@perpage');
+//Route::get('/persons/byName/{partialName}', 'PersonController@byName');
