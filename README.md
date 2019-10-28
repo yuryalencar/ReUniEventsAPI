@@ -103,3 +103,7 @@ base_url/users/:idUser
 ```
 base_url/users/:idUser
 ```
+
+#### 2.3 Pages
+
+*_@TODO_*
