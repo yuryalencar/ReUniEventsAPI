@@ -107,3 +107,8 @@ base_url/persons/:idUser
 #### 2.3 Pages
 
 **_@TODO_**
+
+
+#### 2.4 Facebook Events
+
+**_@TODO_**
