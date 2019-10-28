@@ -49,6 +49,11 @@ base_url/events
 ```
 base_url/events/perpage/:amountItensPerPage
 ```
+> Search event by partial ou full name (GET)
+
+```
+base_url/events/byName/:FullOrPartialName
+```
 
 > Get a specific event (GET)
 
