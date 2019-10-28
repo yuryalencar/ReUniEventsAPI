@@ -85,23 +85,23 @@ base_url/persons/byName/:FullOrPartialName
 base_url/persons/:idPerson
 ```
 
-> Save a user token (POST)
+> Save a person with your facebook token (POST)
 
 ```
-base_url/users
+base_url/persons
 ```
 
-> Update a user token (PUT)
+> Update a person with your facebook token (PUT)
 
 ```
-base_url/users/:idUser
+base_url/persons/:idUser
 ```
 
 
-> Delete a user token (DELETE)
+> Delete a person with your facebook token (DELETE)
 
 ```
-base_url/users/:idUser
+base_url/persons/:idUser
 ```
 
 #### 2.3 Pages
