@@ -37,6 +37,8 @@ php artisan serve
 
 ### 2. How to use
 
+This section has how to use of the ReUniEventsAPI
+
 #### 2.1 Events
 
 > Get all itens in facebook (GET)
