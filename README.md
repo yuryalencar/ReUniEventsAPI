@@ -62,6 +62,12 @@ base_url/events/:idEvent
 base_url/persons
 ```
 
+> Search person by partial ou full name (GET)
+
+```
+base_url/persons/byName/{FullOrPartialName}
+```
+
 > Get a specific person (GET)
 
 ```
