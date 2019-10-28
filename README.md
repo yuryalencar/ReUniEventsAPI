@@ -37,6 +37,8 @@ php artisan serve
 
 ### 2. How to use
 
+#### 2.1 Events
+
 > Get all itens in facebook (GET)
 
 ```
@@ -60,6 +62,8 @@ base_url/events/byName/:FullOrPartialName
 ```
 base_url/events/:idEvent
 ```
+
+#### 2.2 Persons
 
 > Get a all persons (GET)
 
