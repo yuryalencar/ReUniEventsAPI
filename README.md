@@ -2,6 +2,12 @@
 
 ### 1. How to install (DEV)
 
+> Go to ReUniAPI directory
+
+```
+cd ReUniAPI
+```
+
 > Create database
 
 > Install dependencies
