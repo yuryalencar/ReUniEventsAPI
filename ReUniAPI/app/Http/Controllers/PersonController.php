@@ -71,6 +71,10 @@ class PersonController extends Controller
 
     public function destroy(Person $person)
     {
+        $pages = $person->pages;
+        for ($i = 0; $i < count($pages); $i++) {
+            $pages[$i]->delete();
+        }
         $person->delete();
 
         return response()->json();
