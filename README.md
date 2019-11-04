@@ -1,6 +1,6 @@
 # ReUniEventsAPI
 
-### 1. How to install (DEV)
+### 1 How to install (DEV)
 
 > Create database
 
@@ -39,6 +39,13 @@ php artisan migrate --seed
 > Start application
 ```
 php artisan serve
+```
+
+#### 1.1 How to update project (DEV)
+
+> Update database of the application
+```
+php artisan migrate:fresh --seed
 ```
 
 ### 2. How to use
