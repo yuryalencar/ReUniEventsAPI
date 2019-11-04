@@ -62,7 +62,7 @@ base_url/events/perpage/:amountItensPerPage
 > Search event by partial ou full name (GET)
 
 ```
-base_url/events/byName/:FullOrPartialName
+base_url/events/byName/:fullOrPartialName
 ```
 
 > Get a specific event (GET)
@@ -82,7 +82,7 @@ base_url/persons
 > Search person by partial ou full name (GET)
 
 ```
-base_url/persons/byName/:FullOrPartialName
+base_url/persons/byName/:fullOrPartialName
 ```
 
 > Get a specific person (GET)
@@ -112,8 +112,60 @@ base_url/persons/:idUser
 
 #### 2.3 Pages
 
-**_@TODO_**
+> Get a all pages (GET)
 
+```
+base_url/pages
+```
+
+> Search page by partial ou full name (GET)
+
+```
+base_url/pages/byName/:fullOrPartialName
+```
+
+> Get a specific page (GET)
+
+```
+base_url/pages/:idPage
+```
+
+> Get pages by person name (GET)
+
+```
+base_url/pages/byPersonName/:fullPersonName
+```
+
+> Get pages by person id (GET)
+
+```
+base_url/pages/bySpecificPerson/:idPerson
+```
+
+> Get administrator page by id page (GET)
+
+```
+base_url/pages/:idPage/mainThePage
+```
+
+> Save a page for this is required send "person_id" and "slug_of_the_page" (POST)
+
+```
+base_url/pages
+```
+
+> Update a person with your facebook token (PUT)
+
+```
+base_url/page/:idPage
+```
+
+
+> Delete a person with your facebook token (DELETE)
+
+```
+base_url/page/:idPage
+```
 
 #### 2.4 Facebook Events
 
