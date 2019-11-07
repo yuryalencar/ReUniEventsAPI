@@ -12,7 +12,7 @@ class Person extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'facebook_token',
+        'name', 'expires_at', 'facebook_token',
     ];
 
     /**

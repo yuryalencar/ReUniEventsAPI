@@ -6,6 +6,9 @@ use App\Http\Requests\PersonRequest;
 use App\Http\Resources\PersonResource;
 use App\Http\Resources\PersonResourceCollection;
 use App\Person;
+use Facebook\Exceptions\FacebookResponseException;
+use Facebook\Exceptions\FacebookSDKException;
+use Facebook\Facebook;
 use Illuminate\Http\Request;
 
 class PersonController extends Controller
@@ -48,13 +51,36 @@ class PersonController extends Controller
 
     /**
      * @param PersonRequest $request
-     * @return PersonResource
+     * @return PersonResource|\Illuminate\Http\JsonResponse
      */
-    public function store(PersonRequest $request): PersonResource
+    public function store(PersonRequest $request)
     {
-        $person = Person::create($request->all());
+        try {
+            $dataToStore = [
+                'name' => $request->input('name'),
+                'expires_at' => null,
+                'facebook_token' => ''
+            ];
 
-        return new PersonResource($person);
+            $fb = new Facebook([
+                'app_id' => '886080755066334',
+                'app_secret' => 'd21359829b58410807733a094d672a62',
+            ]);
+
+            $oAuth2Client = $fb->getOAuth2Client();
+            $accessToken = $oAuth2Client->getLongLivedAccessToken($request->input('facebook_token'));
+
+            $dataToStore['facebook_token'] = $accessToken->getValue();
+            $dataToStore['expires_at'] = $accessToken->getExpiresAt();
+
+            $person = Person::create($dataToStore);
+
+            return new PersonResource($person);
+        } catch (FacebookResponseException $e) {
+            return response()->json(['message' => 'Graph returned an error: ' . $e->getMessage()])->setStatusCode(400);
+        } catch (FacebookSDKException $e) {
+            return response()->json(['message' => 'Facebook SDK returned an error: ' . $e->getMessage()])->setStatusCode(400);
+        }
     }
 
     /**
