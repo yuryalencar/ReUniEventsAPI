@@ -176,4 +176,9 @@ base_url/page/:idPage
 
 #### 2.4 Facebook Events
 
-**_@TODO_**
+> Update access token for a page by users registereds in database (For token of the 60 days for pages) (GET)
+
+```
+base_url/facebookManager/updateAccessTokenPages
+```
+
