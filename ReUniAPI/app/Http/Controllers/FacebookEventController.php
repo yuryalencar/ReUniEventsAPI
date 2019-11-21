@@ -2,93 +2,112 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
+use App\Mail\SendMailUpdateToken;
+use App\Person;
+use App\User;
+use Carbon\Carbon;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Facebook\FacebookClient;
 use Facebook\FacebookRequest;
+use Facebook\GraphNodes\GraphEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FacebookEventController extends Controller
 {
-    public function getEvents()
+    public static function removeOldEvents()
     {
-        try {
-            $eventPageSlug = 'PaginaProgramaC';
-            $accessToken = 'EAAMl4sCl5d4BAOSelrQVNwiznKtZCuZAIC8CMZBthjzrSUENszPHGpZBtqBbDYZBzJ7lqcCHIamEB7UBFYEkZAvtQEQ4T00qz5e4YUhbuyalOchk5Krkxuexd9UxoaL32uUZCOVeWfd27IZAgcMdGxYjZC9cs3YWBCfgnANtB7Wild6Ouzl0IQYWBZARCjpOtgMZABkpqBQzyZALGGDxdUpMvqGQKFFF0VrWrbsbHItYfZA4FhwZDZD';
-
-            $fb = new Facebook([
-                'app_id' => '886080755066334',
-                'app_secret' => 'd21359829b58410807733a094d672a62',
-            ]);
-
-            $response = $fb->get(
-                '/' . $eventPageSlug . '/events/',
-                $accessToken
-            );
-            dd($accessToken);
-
-//            $accessToken = 'EAAMl4sCl5d4BAETbaKNDJX9qSRY2KBb4phHm0MGu0LJWdXnpNBafZABeqQRple6SPhozPTaVEEFnVpEbW9dQrMT0Dk7yk3ocQGZAlyreoKjygm6ZCr2ZByO8k8cZCrNlprMZCONNagfrOIkUzZCbtXAEpLE0yTwoq1AzhGi4fC43zV33TQ1GoxZB5ELZANJMWuUvoBvsTXQPO6QZDZD';
-
-
-
-            // Returns a `FacebookFacebookResponse` object
-
-//            $response = $fb->get("/me/accounts", $accessToken);
-//            $accounts = $response->getGraphEdge();
-
-//            $string = '';
-
-//            foreach ($accounts as $account) {
-//                $string = $string . "ID => " . $account['id'] . "\n";
-//                $string = $string . "Name => " . $account['name'] . "\n";
-//                $string = $string . "Access Token => " . $account['access_token'] . "\n";
-//                $string = $string . "--------------\n";
-//            }
-//
-//            dd($string);
-
-        } catch (FacebookResponseException $e) {
-            return response()->json(['message' => 'Graph returned an error: ' . $e->getMessage()])->setStatusCode(400) ;
-        } catch (FacebookSDKException $e) {
-            return response()->json(['message' => 'Facebook SDK returned an error: ' . $e->getMessage()])->setStatusCode(400) ;
-        }
-        $responseInJson = json_decode($response->getBody(), true);
-        return $responseInJson;
-//        $graphNode = $response->getGraphNode();
+        Event::where('date', '<', Carbon::yesterday())->delete();
     }
 
-    public function storeEvents()
+    public static function notifyPeopleWithOldTokens()
+    {
+        $persons = Person::where('expires_at', '<', Carbon::now())->get();
+
+        foreach ($persons as $person) {
+            if ($person->required_new_token == false) {
+                self::sendmail($person);
+                $person->update(['expires_at' => Carbon::now()]);
+                $person->update(['required_new_token' => true]);
+                $person->save();
+            }
+        }
+    }
+
+    public static function sendmail($person)
+    {
+        Mail::to($person->email)->send(new SendMailUpdateToken($person));
+    }
+
+    public static function updateDatabaseEvents()
     {
         try {
-            $eventPageSlug = 'PaginaProgramaC';
-            $accessToken = 'EAAMl4sCl5d4BAOSelrQVNwiznKtZCuZAIC8CMZBthjzrSUENszPHGpZBtqBbDYZBzJ7lqcCHIamEB7UBFYEkZAvtQEQ4T00qz5e4YUhbuyalOchk5Krkxuexd9UxoaL32uUZCOVeWfd27IZAgcMdGxYjZC9cs3YWBCfgnANtB7Wild6Ouzl0IQYWBZARCjpOtgMZABkpqBQzyZALGGDxdUpMvqGQKFFF0VrWrbsbHItYfZA4FhwZDZD';
-            $fb = new Facebook([
-                'app_id' => '886080755066334',
-                'app_secret' => 'd21359829b58410807733a094d672a62',
-            ]);
-            $response = $fb->get("/me/accounts", $accessToken);
-            $accounts = $response->getGraphEdge();
 
-            $string = '';
+            $people = Person::all();
 
-            foreach ($accounts as $account) {
-                $string = $string . "ID => " . $account['id'] . "\n";
-                $string = $string . "Name => " . $account['name'] . "\n";
-                $string = $string . "Access Token => " . $account['access_token'] . "\n";
-                $string = $string . "--------------\n";
+            foreach ($people as $person) {
+
+                try {
+                    if (!Carbon::parse($person->expires_at)->lt(Carbon::now())) {
+                        $pages = $person->pages;
+
+                        foreach ($pages as $page) {
+                            $fb = new Facebook([
+                                'app_id' => '886080755066334',
+                                'app_secret' => 'd21359829b58410807733a094d672a62',
+                                'default_graph_version' => 'v4.0',
+                            ]);
+
+                            $response = $fb->get(
+                                '/' . $page->slug_of_the_page . '/events?fields=description,name,place,start_time,end_time,category,cover,is_canceled',
+                                $person->facebook_token
+                            );
+                            $events = $response->getGraphEdge();
+
+                            foreach ($events as $event) {
+                                $data = [];
+                                if (Event::where('name', '=', $event['name'])->first() != null) {
+                                    Event::where('name', '=', $event['name'])->first()->delete();
+                                }
+                                if (isset($event['name']))
+                                    $data['name'] = $event['name'];
+                                if (isset($event['place']['name']))
+                                    $data['place'] = $event['place']['name'] . " Localizado em: " . $event['place']['location']['city'] . "-" . $event['place']['location']['state'];
+                                if (isset($event['start_time']))
+                                    $data['date'] = $event['start_time'];
+                                if (isset($event['category']))
+                                    $data['category'] = $event['category'];
+                                if (isset($event['cover']['source']))
+                                    $data['image'] = $event['cover']['source'];
+                                if (isset($event['is_canceled']))
+                                    $data['is_canceled'] = $event['is_canceled'];
+                                Event::create($data);
+                            }
+                        }
+                    }
+                } catch (FacebookResponseException $e) {
+                    $person->update(['expires_at' => Carbon::now()]);
+                    $person->update(['required_new_token' => true]);
+                    $person->save();
+                    self::sendmail($person);
+                } catch (FacebookSDKException $e) {
+                    $person->update(['expires_at' => Carbon::now()]);
+                    $person->update(['required_new_token' => true]);
+                    $person->save();
+                    self::sendmail($person);
+                }
             }
-
-            dd($string);
-//
         } catch (FacebookResponseException $e) {
-            echo 'Graph returned an error: ' . $e->getMessage();
-            exit;
+            return response()->json(['message' => 'Graph returned an error: ' . $e->getMessage()])->setStatusCode(400);
         } catch (FacebookSDKException $e) {
-            echo 'Facebook SDK returned an error: ' . $e->getMessage();
-            exit;
+            return response()->json(['message' => 'Facebook SDK returned an error: ' . $e->getMessage()])->setStatusCode(400);
         }
-        $responseInJson = json_decode($response->getBody(), true);
+        $responseInJson = response()->json(['message' => 'all events saved'])->setStatusCode(201);
+        self::removeOldEvents();
+        self::notifyPeopleWithOldTokens();
         return $responseInJson;
     }
 }

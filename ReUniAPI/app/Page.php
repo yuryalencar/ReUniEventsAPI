@@ -13,7 +13,7 @@ class Page extends Model
      * @var array
      */
     protected $fillable = [
-        'slug_of_the_page', 'person_id',
+        'name', 'slug_of_the_page', 'person_id',
     ];
 
     /**

@@ -34,5 +34,4 @@ Route::get('/pages/byPersonName/{fullPersonName}', 'PageController@byPersonName'
 Route::get('/pages/bySpecificPerson/{idPerson}', 'PageController@bySpecificPerson');
 Route::get('/pages/{idPage}/mainThePage', 'PageController@mainThePage');
 
-Route::get('/test', 'FacebookEventController@getEvents');
-Route::get('/testsave', 'FacebookEventController@storeEvents');
+Route::get('/testsave', 'FacebookEventController@updateDatabaseEvents');

@@ -15,13 +15,14 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable();
+            $table->longText('description')->nullable();
             $table->longText('image')->nullable();
-            $table->string('name');
-            $table->string('category');
-            $table->longText('description');
-            $table->string('place');
-            $table->dateTimeTz('date');
-            $table->float('price');
+            $table->dateTimeTz('date')->nullable();
+            $table->string('category')->nullable();
+            $table->string('place')->nullable();
+            $table->float('price')->nullable();
+            $table->boolean('is_canceled')->nullable();
             $table->timestamps();
         });
     }

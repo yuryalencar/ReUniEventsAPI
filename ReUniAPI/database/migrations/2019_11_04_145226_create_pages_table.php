@@ -15,8 +15,8 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->longText('slug_of_the_page');
-            $table->longText('access_token');
             $table->unsignedBigInteger('person_id')->nullable();
             $table->foreign('person_id')->references('id')->on('people');
             $table->timestamps();

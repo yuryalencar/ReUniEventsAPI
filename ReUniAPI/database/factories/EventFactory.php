@@ -14,5 +14,6 @@ $factory->define(Event::class, function (Faker $faker) {
         'place' => $faker->country,
         'date' => $faker->dateTime(),
         'price' => $faker->randomFloat(2, 0, 5000),
+        'is_canceled' => $faker->boolean
     ];
 });

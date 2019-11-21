@@ -16,8 +16,10 @@ class CreatePeopleTable extends Migration
         Schema::create('people', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('email');
             $table->dateTime('expires_at');
             $table->longText('facebook_token');
+            $table->boolean('required_new_token')->nullable();
             $table->timestamps();
         });
     }
