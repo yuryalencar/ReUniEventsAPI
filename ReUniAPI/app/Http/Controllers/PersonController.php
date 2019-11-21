@@ -63,8 +63,9 @@ class PersonController extends Controller
             ];
 
             $fb = new Facebook([
-                'app_id' => '886080755066334',
-                'app_secret' => 'd21359829b58410807733a094d672a62',
+                'app_id' => env('FACEBOOK_APP_ID'),
+                'app_secret' => env('FACEBOOK_APP_SECRET'),
+                'default_graph_version' => env('FACEBOOK_GRAPH_API_VERSION'),
             ]);
 
             $oAuth2Client = $fb->getOAuth2Client();

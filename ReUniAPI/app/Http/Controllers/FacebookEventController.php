@@ -56,9 +56,9 @@ class FacebookEventController extends Controller
 
                         foreach ($pages as $page) {
                             $fb = new Facebook([
-                                'app_id' => '886080755066334',
-                                'app_secret' => 'd21359829b58410807733a094d672a62',
-                                'default_graph_version' => 'v4.0',
+                                'app_id' => env('FACEBOOK_APP_ID'),
+                                'app_secret' => env('FACEBOOK_APP_SECRET'),
+                                'default_graph_version' => env('FACEBOOK_GRAPH_API_VERSION'),
                             ]);
 
                             $response = $fb->get(
