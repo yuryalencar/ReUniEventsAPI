@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6dd0d39-7e2f-4b5b-b4f0-9e69ba4e6cef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/emails/updatetoken.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FacebookEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FacebookEventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Page.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Person.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/EventFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/EventFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/PagesFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PagesFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/PersonFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/PersonFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_17_163446_create_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_17_163446_create_events_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_21_155913_create_people_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_21_155913_create_people_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_04_145226_create_pages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_04_145226_create_pages_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -183,7 +170,7 @@
       <workItem from="1573741695791" duration="6807000" />
       <workItem from="1574167219413" duration="191000" />
       <workItem from="1574168561748" duration="122000" />
-      <workItem from="1574339852593" duration="8429000" />
+      <workItem from="1574339852593" duration="8938000" />
     </task>
     <servers />
   </component>
