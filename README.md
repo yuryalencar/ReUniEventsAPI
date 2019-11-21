@@ -1,5 +1,10 @@
 # ReUniEventsAPI
 
+### Requirements
+
+* Insert your Mail config
+* Configure Cron for execute a schedule:run for get events automatically
+
 ### 1 How to install (DEV)
 
 > Create database
@@ -176,9 +181,9 @@ base_url/page/:idPage
 
 #### 2.4 Facebook Events
 
-> Update access token for a page by users registereds in database (For token of the 60 days for pages) (GET)
+> Configure a Cron in your PC or Server
 
 ```
-base_url/facebookManager/updateAccessTokenPages
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
