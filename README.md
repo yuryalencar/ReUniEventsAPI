@@ -54,7 +54,7 @@ This section has how to use of the ReUniEventsAPI
 
 #### 2.1 Events
 
-> Get all itens in facebook (GET)
+> Get all events in facebook saved in database (GET)
 
 ```
 base_url/events
@@ -80,7 +80,7 @@ base_url/events/:idEvent
 
 #### 2.2 Persons
 
-> Get a all persons (GET)
+> Get all persons (facebook page administrator) saved in database (GET)
 
 ```
 base_url/persons
@@ -137,19 +137,19 @@ base_url/pages/byName/:fullOrPartialName
 base_url/pages/:idPage
 ```
 
-> Get pages by person name (GET)
+> Get pages by person(administrator) name (GET)
 
 ```
 base_url/pages/byPersonName/:fullPersonName
 ```
 
-> Get pages by person id (GET)
+> Get pages by person(administrator) id (GET)
 
 ```
 base_url/pages/bySpecificPerson/:idPerson
 ```
 
-> Get administrator page by id page (GET)
+> Get administrator(person) page by id page (GET)
 
 ```
 base_url/pages/:idPage/mainThePage
@@ -161,14 +161,14 @@ base_url/pages/:idPage/mainThePage
 base_url/pages
 ```
 
-> Update a person with your facebook token (PUT)
+> Update a page (PUT)
 
 ```
 base_url/page/:idPage
 ```
 
 
-> Delete a person with your facebook token (DELETE)
+> Delete a page (DELETE)
 
 ```
 base_url/page/:idPage
