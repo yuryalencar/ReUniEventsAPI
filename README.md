@@ -187,3 +187,16 @@ base_url/page/:idPage
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
 ```
 
+> How to make a Cron Job in Windows ?
+
+```
+https://www.youtube.com/watch?v=M2Ss0oUPBFQ
+```
+
+> How to make a Cron Job in my Server ?
+
+```
+Verify documentation of your server
+```
+
+
