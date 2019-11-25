@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a6dd0d39-7e2f-4b5b-b4f0-9e69ba4e6cef" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FacebookEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FacebookEventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PersonController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/PersonRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/PersonRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Person.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Person.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +117,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/emails" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -170,7 +173,9 @@
       <workItem from="1573741695791" duration="6807000" />
       <workItem from="1574167219413" duration="191000" />
       <workItem from="1574168561748" duration="122000" />
-      <workItem from="1574339852593" duration="10033000" />
+      <workItem from="1574339852593" duration="11475000" />
+      <workItem from="1574633649368" duration="207000" />
+      <workItem from="1574710880195" duration="875000" />
     </task>
     <servers />
   </component>

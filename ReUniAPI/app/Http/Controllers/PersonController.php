@@ -58,6 +58,7 @@ class PersonController extends Controller
         try {
             $dataToStore = [
                 'name' => $request->input('name'),
+                'email' => $request->input('email'),
                 'expires_at' => null,
                 'facebook_token' => ''
             ];
@@ -67,6 +68,7 @@ class PersonController extends Controller
                 'app_secret' => env('FACEBOOK_APP_SECRET'),
                 'default_graph_version' => env('FACEBOOK_GRAPH_API_VERSION'),
             ]);
+
 
             $oAuth2Client = $fb->getOAuth2Client();
             $accessToken = $oAuth2Client->getLongLivedAccessToken($request->input('facebook_token'));

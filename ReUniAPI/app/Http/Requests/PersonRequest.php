@@ -24,7 +24,8 @@ class PersonRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|string|email',
             'facebook_token' => 'required'
         ];
     }
