@@ -62,25 +62,25 @@ This section has how to use of the ReUniEventsAPI
 > Get all events in facebook saved in database (GET)
 
 ```
-base_url/events
+base_url/api/events
 ```
 
 
 > Get itens by page using pagination, contains N itens per page (GET)
 
 ```
-base_url/events/perpage/:amountItensPerPage
+base_url/api/events/perpage/:amountItensPerPage
 ```
 > Search event by partial ou full name (GET)
 
 ```
-base_url/events/byName/:fullOrPartialName
+base_url/api/events/byName/:fullOrPartialName
 ```
 
 > Get a specific event (GET)
 
 ```
-base_url/events/:idEvent
+base_url/api/events/:idEvent
 ```
 
 #### 2.2 Persons
@@ -88,38 +88,38 @@ base_url/events/:idEvent
 > Get all persons (facebook page administrator) saved in database (GET)
 
 ```
-base_url/persons
+base_url/api/persons
 ```
 
 > Search person by partial ou full name (GET)
 
 ```
-base_url/persons/byName/:fullOrPartialName
+base_url/api/persons/byName/:fullOrPartialName
 ```
 
 > Get a specific person (GET)
 
 ```
-base_url/persons/:idPerson
+base_url/api/persons/:idPerson
 ```
 
 > Save a person with your facebook token (POST)
 
 ```
-base_url/persons
+base_url/api/persons
 ```
 
 > Update a person with your facebook token (PUT)
 
 ```
-base_url/persons/:idUser
+base_url/api/persons/:idUser
 ```
 
 
 > Delete a person with your facebook token (DELETE)
 
 ```
-base_url/persons/:idUser
+base_url/api/persons/:idUser
 ```
 
 #### 2.3 Pages
@@ -127,56 +127,56 @@ base_url/persons/:idUser
 > Get a all pages (GET)
 
 ```
-base_url/pages
+base_url/api/pages
 ```
 
 > Search page by partial ou full name (GET)
 
 ```
-base_url/pages/byName/:fullOrPartialName
+base_url/api/pages/byName/:fullOrPartialName
 ```
 
 > Get a specific page (GET)
 
 ```
-base_url/pages/:idPage
+base_url/api/pages/:idPage
 ```
 
 > Get pages by person(administrator) name (GET)
 
 ```
-base_url/pages/byPersonName/:fullPersonName
+base_url/api/pages/byPersonName/:fullPersonName
 ```
 
 > Get pages by person(administrator) id (GET)
 
 ```
-base_url/pages/bySpecificPerson/:idPerson
+base_url/api/pages/bySpecificPerson/:idPerson
 ```
 
 > Get administrator(person) page by id page (GET)
 
 ```
-base_url/pages/:idPage/mainThePage
+base_url/api/pages/:idPage/mainThePage
 ```
 
 > Save a page for this is required send "person_id" and "slug_of_the_page" (POST)
 
 ```
-base_url/pages
+base_url/api/pages
 ```
 
 > Update a page (PUT)
 
 ```
-base_url/page/:idPage
+base_url/api/page/:idPage
 ```
 
 
 > Delete a page (DELETE)
 
 ```
-base_url/page/:idPage
+base_url/api/page/:idPage
 ```
 
 #### 2.4 Facebook Events
