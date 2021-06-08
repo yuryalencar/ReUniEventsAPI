@@ -20,6 +20,11 @@ cd ReUniAPI
 ```
 composer install
 ```
+> Update dependencies
+
+```
+composer update
+```
 
 > Copy .env.example to .env file
 
