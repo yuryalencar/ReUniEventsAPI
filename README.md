@@ -4,7 +4,8 @@
 
 * Insert your Mail config
 * Configure Cron for execute a schedule:run for get events automatically
-
+* Download GitBash
+* Download Xampp
 ### 1 How to install (DEV)
 
 > Create database
