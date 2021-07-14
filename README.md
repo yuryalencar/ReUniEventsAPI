@@ -6,6 +6,7 @@
 * Configure Cron for execute a schedule:run for get events automatically
 * Download GitBash
 * Download Xampp
+* Download Composer
 ### 1 How to install (DEV)
 
 > Create database
